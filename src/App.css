@@ -1,33 +1,124 @@
 .App {
+  display: flex;
   text-align: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.navBar{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  flex-direction: row;
+  background: #1c92d2;
+  background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);
+  background: linear-gradient(to right, #f2fcfe, #1c92d2);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo{
+  width: 45px;
+  height: 100%;
+  margin-left: 20%;
+}
+
+.textoNavBar{
+  margin-top: 10px;
+  font-family: 'Sniglet', cursive;
+  font-size: 27px;
+  color:#66757F;
+}
+
+.contenedorFormulario{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 60%;
+  height: 70px;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 1px solid #044169;
+  margin-top: 5px;
+}
+
+.imgAndName{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#imageProfile{
+  width: 65px;
+  height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#nameProfile{
+  font-family: 'Sniglet', cursive;
+  font-size: 20px;
+  color:#66757F;
+  width: 12%;
+}
+
+.twit{
+  width: 70%;
+  height: 50px;
+  font-family: 'Sniglet', cursive;
+  color:#66757F;
+  font-size: 12px;
+  border-radius: 8px 8px 8px 8px;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  border: 1px solid #044169;
+}
+
+.publicar{
+  width: 8%;
+  height: 25px;
+  font-family: 'Sniglet', cursive;
+  color:#66757F;
+  font-size: 15px;
+  border-radius: 8px 8px 8px 8px;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  border: 1px solid #044169;
+  background: #e6f4fa;
+  margin-left: 8px;
+}
+
+.twitteado{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 60%;
+  height: 70px;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 1px solid #044169;
+  margin-top: 5px;
+}
+
+.twitLabel{
+  text-align: left;
+  width: 70%;
+  height: 50px;
+  font-family: 'Sniglet', cursive;
+  color:#66757F;
+  font-size: 12px;
+  border-radius: 0px 0px 8px 8px;
+  -moz-border-radius: 0px 0px 8px 8px;
+  -webkit-border-radius: 0px 0px 8px 8px;
+  border: 1px solid #044169;
+  background: #e6f4fa;
+}
+
+.hora{
+  width: 8%;
+  height: 25px;
+  font-family: 'Sniglet', cursive;
+  color:#66757F;
+  font-size: 15px;
+  margin-left: 8px;
 }

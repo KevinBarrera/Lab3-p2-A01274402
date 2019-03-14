@@ -1,0 +1,19 @@
+{
+    "allTwits": [
+      {
+        "user": "Gris",
+        "twitt": "Hola soy el gatito de Kevin y estoy aprendiendo a usar react",
+        "time": "02:30 p.m"
+      },
+      {
+        "user": "Wero",
+        "twitt": "Hola soy el otro gatito de Kevin y estoy aprendiendo a usar react junto con Gris y Kevin",
+        "time": "03:30 p.m"
+      },
+      {
+        "user": "Nene",
+        "twitt": "Hola soy el sobrino de Kevin y le estoy enseñando a usar react",
+        "time": "04:30 p.m"
+      }
+    ]
+  }
