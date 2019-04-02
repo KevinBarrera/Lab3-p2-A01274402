@@ -9,9 +9,9 @@ class TwitToPublic extends Component{
   constructor(){
     super();
     this.state = {
-      user: 'KevinBH',
-      twitt: '',
-      time: '10:45 p.m',
+      user_name: 'KevinBH',
+      description: '',
+      avatar: "https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png"
     };
     this.handleTwit = this.handleTwit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,30 +21,30 @@ class TwitToPublic extends Component{
     e.preventDefault();
     this.props.onPublicTwit(this.state);
     this.setState({
-      user: 'KevinBH',
-      twitt: '',
-      time: '10:45 p.m',
+      user_name: 'KevinBH',
+      description: '',
+      avatar: "https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png"
     });
   }
 
   handleTwit(e){
     this.setState({
-      twitt: e.target.value,
+      description: e.target.value,
     });
   }
 
   render(){
     return(
       <form onSubmit={this.handleSubmit} className="contenedorFormulario">
-        <img id="imageProfile" src="https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png"></img>
+        <img id="imageProfile" src={this.state.avatar}></img>
         <div id="nameProfile">
-          {this.state.user}
+          {this.state.user_name}
         </div>
         <input
           type="text"
-          name="twitt"
+          name="description"
           className="twit" 
-          value={this.state.twitt}
+          value={this.state.description}
           placeholder="¿Qué estás pensando?"
           onChange={this.handleTwit}
         >
@@ -70,27 +70,55 @@ class App extends Component {
     this.handlePublicTwit = this.handlePublicTwit.bind(this);
   }
 
+  componentDidMount(){
+    fetch("https://still-garden-88285.herokuapp.com/draft_tweets")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            allTwits: result.draft_tweets
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
   handlePublicTwit(twit){
-    this.setState({
-      allTwits: [...this.state.allTwits, twit]
-    });
+    fetch("https://still-garden-88285.herokuapp.com/draft_tweets", {
+      method: "POST",
+      body: JSON.stringify(twit),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(res=>res.json())
+    .then((res)=>{
+      this.setState({
+        allTwits: [...this.state.allTwits, res.draft_tweet]
+      });
+    })
+
   }
 
   render() {
     const allTwits = this.state.allTwits.map(twit => {
       return(
         <div className="twitteado">
-          <img id="imageProfile" src="https://www.logolynx.com/images/logolynx/e5/e5ba79334133d2cb362dd639f755a392.png"></img>
-          <div id="nameProfile">{twit.user}</div>
+          <img id="imageProfile" src={twit.avatar}></img>
+          <div id="nameProfile">{twit.user_name}</div>
           <label className="twitLabel">
-            {twit.twitt}
+            {twit.description}
           </label>
           <div className="hora">
-            {twit.time}
+            {twit.created_at}
           </div>
         </div>
       );
-    });
+    }); 
 
     return (
       <div className="App">
